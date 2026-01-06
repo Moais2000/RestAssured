@@ -3,9 +3,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.when;
 
-public class DELETE_PET {
+public class DELETE_PET_STORE {
 
     @DataProvider(name = "deleted_ids")
     public Object[] DeletedIds() {
@@ -15,9 +14,9 @@ public class DELETE_PET {
     }
 
     @Test(dataProvider = "deleted_ids")
-    public void Delete_order(int petID)
+    public void Delete_order(int orderId)
     {
-        given().pathParam("petID",petID).
-        when().delete("https://petstore.swagger.io/v2/pet/{petID}").then().statusCode(200);
+        given().pathParam("orderId",orderId).
+        when().delete("https://petstore.swagger.io/v2/store/order/{orderId}").then().statusCode(200);
     }
 }
